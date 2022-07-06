@@ -1,5 +1,5 @@
 void main() {
-  //변수 선언
+  /*//변수 선언
   var name = "유찬홍";
 
   print(name);
@@ -68,4 +68,39 @@ void main() {
   print(g);
   final h = 32; //물론 var같이 형식을 생략할수 있다
   print(h);
+
+  final DateTime now = DateTime.now();
+  print(now);
+  //const DateTime now2 = DateTime.now(); const는 빌드 시간을 알고 있어야 함
+  //print(now2); DateTime은 final로 할것!!
+
+  int number = 2;
+
+  print(number);
+  print(number+2);
+  print(number-2);
+  print(number*2);
+  print(number/2);
+
+  print('----------------');
+  print(number%2);
+  print(number%3); // 3/2는 나머지가 2임
+  print(number); //별짓 다해도 얘는 아직 2임
+  print('--------------');
+  number ++; //후치증가
+  print(number);//얘는 3임
+  number--;//후치감소
+  print(number);//얘는 2임
+  */
+  double num1 = 4.0;
+  print(num1);
+  num1 += 1;
+  print(num1);
+  num1-=1;
+  print(num1);
+  num1 *=2;
+  print(num1);
+  num1 /=2;
+  print(num1);
+  
 }
