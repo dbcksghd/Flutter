@@ -383,6 +383,38 @@ addNumbers(){
     int z = 30,
   })=> x + y + z; //return을 arrow function으로 보낼수 있음
   */
-  void main(){
+  //typedef
+    void main(){
+    Operation operation = add;
+
+    int result = operation(10, 20, 30);
+
+    print(result);
+
+    operation = sub;
+
+    int result2 = operation(10, 20, 30);
     
+    print(result2);
+
+    int result3 = calculate(30, 40, 50, add);
+
+    print(result3);
+
+    int result4 = calculate(40, 50, 60, sub);
+
+    print(result4);
   }
+  typedef Operation = int Function(int x, int y, int z);
+
+  //더하기
+  int add(int x, int y, int z) => x+y+z;
+
+  //빼기
+  int sub(int x, int y, int z) => x-y-z;
+  //매개변수가 같은 함수들은 typedef로 사용할수 있다..? 이부분은 좀더 알아봐야할듯
+
+  int calculate(int x, int y, int z, Operation operation){
+    return operation(x, y, z);
+  }
+
