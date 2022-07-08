@@ -308,12 +308,14 @@ void main(){
   }
 
 }
-*/
+
 //함수 선언법
 void main(){
   addNumbers();
   addNumbers1(10, 20, 30);
   addNumbers2(y:20, x:10, z:30);
+  print(a());
+  print(b(x:10, y: 20));
 }
 //함수란? 반복되는 코드를 한번만 작성하고 재활용할수 있게 해주는것
 // 세개의 숫자(x, y, z)를 더하고 짝수인지 홀수인지 알려주는 함수
@@ -350,7 +352,7 @@ addNumbers(){
   }//값을 입력받아서 세자리 수를 더해주는 함수를 만들수 있음 ^^7'
   //positional parameter - 순서가 중요한 파라미터
   //optional parameter - 있어도 되고 없어도 되는 파라미터
-  //named parameter - 이름이 있는 파라미터 (순서가 중요하지 않음)
+  //named parameter - 이름이 있는 파라미터 (순서가 중요하지 않음) 여기서 required를 빼면 optional parameter가 됨 ex) required int x -> int x = 10;
   addNumbers2({
     required int x,
     required int y,
@@ -366,4 +368,21 @@ addNumbers(){
     else{
       print('홀수입니다');
     }
+  }// key:value 느낌으로 값을 가져오는듯 key만 맞으면 그 값이라 굳이 순서가 필요 없어보임
+  //arrow function //화살표 함수
+  int a (){
+    int x = 10;
+    int y = 20;
+    int z = 30;
+    int sum = x + y + z;
+    return sum;
+  }
+  int b ({
+    required int x,
+    required int y,
+    int z = 30,
+  })=> x + y + z; //return을 arrow function으로 보낼수 있음
+  */
+  void main(){
+    
   }
