@@ -1,4 +1,4 @@
-void main() {
+//void main() {
   /*//변수 선언
   var name = "유찬홍";
 
@@ -234,7 +234,7 @@ void main() {
     print('나머지가 2');
     break;
   }
-  */
+  
   //for loop
   for(int i = 0; i < 10; i++)
   {
@@ -246,13 +246,124 @@ void main() {
 
   for (int i = 0; i<numbers.length; i++) //numbers.length = numbers 배열의 길이
   {
-    total +=numbers[i];
+    total +=numbers[i]; //0인덱스부터 5인덱스까지 값들을 total에 더함
   }
-  print(total);
+  print(total); // 1~6까지 다 더한 값
 
   total = 0;
   for (int number in numbers){ //in의 오른쪽에 있는 list 값을 loop을 돌면서
     total += number;             //하나씩 왼쪽의 변수에 넣어줌
   }
+  print(total);//1~6까지 다 더한 값
+  
+  //while loop
+  int total = 0;
+  while(total < 10){
+    total +=1;
+  }
   print(total);
+  total = 0;
+  do{
+    total +=1; //do-while문은 먼저 실행하고 비교함
+  }while(total < 10);//근데 잘 안쓰긴 함
+  print(total);
+  total = 0;
+
+  while(total < 10){
+    total +=1;
+    if(total == 5){
+      break; //만약 total이 5면 while문을 나가라는 뜻
+    }
+  }
+  print(total);
+  int i = 0;
+  while(i<10)
+  {
+    i++;
+    if (i == 5){
+      continue; //만약 i가 5라면 넘어가라는 뜻 ㅇㅇ
+    }
+    print(i); //그래서 5는 출력이 안됨
+  }
+  
 }
+
+enum Status{ //enum을 쓰는 이유 : 정확히 저 3개의 값들만 존재한다는걸
+  approved,  //알려주기 위함
+  pending,
+  rejected,
+}
+void main(){
+  Status status = Status.approved;
+  //String status = 'approved'; //만약 이렇게 쓰면 한글자라도 틀렸을때 거절뜸
+
+  if(status == Status.approved){
+    print('승인입니다');
+  }
+  else if(status == Status.pending){
+    print('대기입니다');
+  }
+  else{
+    print('거절입니다'); 
+  }
+
+}
+*/
+//함수 선언법
+void main(){
+  addNumbers();
+  addNumbers1(10, 20, 30);
+  addNumbers2(y:20, x:10, z:30);
+}
+//함수란? 반복되는 코드를 한번만 작성하고 재활용할수 있게 해주는것
+// 세개의 숫자(x, y, z)를 더하고 짝수인지 홀수인지 알려주는 함수
+addNumbers(){
+  int x = 10;
+  int y = 20;
+  int z = 30;
+
+  int sum = x+y+z;
+  print('x : $x'); //&같은 느낌인듯 ㅇㅇ %x?
+  print('y : $y');
+  print('z : $z');
+
+  if (sum % 2 == 0){
+    print('짝수입니다');
+  }
+  else{
+    print('홀수입니다');
+  }
+}
+
+//parameter - 매개변수가 있다면?
+  addNumbers1(int x, int y, int z){
+    int sum = x + y + z;
+    print('x : $x');
+    print('y : $y');
+    print('z : $z');
+    if (sum % 2 == 0){
+      print('짝수입니다');
+    }
+    else{
+      print('홀수입니다');
+    }
+  }//값을 입력받아서 세자리 수를 더해주는 함수를 만들수 있음 ^^7'
+  //positional parameter - 순서가 중요한 파라미터
+  //optional parameter - 있어도 되고 없어도 되는 파라미터
+  //named parameter - 이름이 있는 파라미터 (순서가 중요하지 않음)
+  addNumbers2({
+    required int x,
+    required int y,
+    required int z,
+  }){
+    int sum = x + y + z;
+    print('x : $x');
+    print('y : $y');
+    print('z : $z');
+    if (sum % 2 == 0){
+      print('짝수입니다');
+    }
+    else{
+      print('홀수입니다');
+    }
+  }
