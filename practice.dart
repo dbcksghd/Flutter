@@ -382,7 +382,7 @@ addNumbers(){
     required int y,
     int z = 30,
   })=> x + y + z; //return을 arrow function으로 보낼수 있음
-  */
+  
   //typedef
     void main(){
     Operation operation = add;
@@ -397,7 +397,7 @@ addNumbers(){
     
     print(result2);
 
-    int result3 = calculate(30, 40, 50, add);
+    int result3 = calculate(30, 40, 50, add); //30, 40, 50을 operation에 있는 add에 넣고 operation에 넣은 x,y,z를 다 더해서 return 해줌
 
     print(result3);
 
@@ -417,4 +417,5 @@ addNumbers(){
   int calculate(int x, int y, int z, Operation operation){
     return operation(x, y, z);
   }
+  */
 
