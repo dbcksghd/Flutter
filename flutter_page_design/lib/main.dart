@@ -32,22 +32,23 @@ class Grade extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('NAME',
-            style: TextStyle(
-              color: Colors.white,
-              letterSpacing: 2.0,
-            ),
+            Text(
+              'NAME',
+              style: TextStyle(
+                color: Colors.white,
+                letterSpacing: 2.0,
+              ),
             ),
             SizedBox(
               height: 10.0,
             ),
-            Text('BBANTO',
-            style: TextStyle(
-              color: Colors.white,
-              letterSpacing: 2.0,
-              fontSize: 28.0,
-              fontWeight: FontWeight.bold
-            ),
+            Text(
+              'BBANTO',
+              style: TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 2.0,
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -55,4 +56,3 @@ class Grade extends StatelessWidget {
     );
   }
 }
-//10강 완강
