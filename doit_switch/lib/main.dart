@@ -13,7 +13,7 @@ class MyApp extends StatefulWidget {
 
 class _MyApp extends State<MyApp> {
   var switchValue = false;
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
