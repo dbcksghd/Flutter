@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'BBANTO',
       home: Grade(),
     );
@@ -22,7 +23,7 @@ class Grade extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.amber[800],
       appBar: AppBar(
-        title: Text('BBANTO'),
+        title: Text('엄준식'),
         backgroundColor: Colors.amber[700],
         centerTitle: true,
         elevation: 0.0,
@@ -32,6 +33,18 @@ class Grade extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/엄준식.jpg'),
+                radius: 60.0,
+              ),
+            ),
+            Divider(
+              height: 60.0,
+              color: Colors.grey[850],
+              thickness: 0.8,
+              endIndent: 30.0,
+            ),
             Text(
               'NAME',
               style: TextStyle(
@@ -43,13 +56,77 @@ class Grade extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              'BBANTO',
+              '엄 준식',
               style: TextStyle(
                   color: Colors.white,
                   letterSpacing: 2.0,
                   fontSize: 28.0,
                   fontWeight: FontWeight.bold),
             ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Text(
+              'Jun-Sick POWER LEVEL',
+              style: TextStyle(
+                color: Colors.white,
+                letterSpacing: 2.0,
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text('14',
+                style: TextStyle(
+                    color: Colors.white,
+                    letterSpacing: 2.0,
+                    fontSize: 28.0,
+                    fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 30.0,
+            ),
+            Row(
+              children: <Widget>[
+                Icon(Icons.check_circle_outline),
+                SizedBox(
+                  width: 10.0,
+                ),
+                Text(
+                  'How',
+                  style: TextStyle(fontSize: 16.0, letterSpacing: 1.0),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Icon(Icons.check_circle_outline),
+                SizedBox(
+                  width: 10.0,
+                ),
+                Text(
+                  'Person\'s name is',
+                  style: TextStyle(fontSize: 16.0, letterSpacing: 1.0),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Icon(Icons.check_circle_outline),
+                SizedBox(
+                  width: 10.0,
+                ),
+                Text(
+                  '엄준식?',
+                  style: TextStyle(fontSize: 16.0, letterSpacing: 1.0),
+                ),
+              ],
+            ),
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/트페준식.jpg'),
+                radius: 80.0,
+              ),
+            )
           ],
         ),
       ),
