@@ -27,7 +27,6 @@ class MaterialFlutterApp extends StatefulWidget {
 class _MaterialFlutterAppState extends State<MaterialFlutterApp> {
   @override
   Widget build(BuildContext context) {
-    //return null; build 함수는 화면에 표시하는 함수인데 null이 들어가있으면 아무것도 표시할수 없으므로 오류가 생김
     return Scaffold(
       appBar: AppBar(
         title: Text('Material Design App'),
