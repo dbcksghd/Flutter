@@ -417,5 +417,9 @@ addNumbers(){
   int calculate(int x, int y, int z, Operation operation){
     return operation(x, y, z);
   }
+
+  //컬렉션 : 배열같은거 ex) list, set, map
+  //제네릭 : 배열의 문자형 ex) int arr, char arr
+  //dart에서는 List<int>나 List<char>처럼 사용하기도 함
   */
 
