@@ -38,7 +38,7 @@ class CupertinoFirstPage extends StatelessWidget {
               ),
             );
           },
-        itemCount: animalList.length,
+        itemCount: animalList!.length,
       ));
   }
 }

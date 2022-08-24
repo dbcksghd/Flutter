@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:listview_example_ios/iosSub/cupertinoSecondPage.dart';
 import 'animalItem.dart';
 import 'iosSub/cupertinoFirstPage.dart';
 
@@ -43,10 +44,8 @@ class _CupertinoMainState extends State<CupertinoMain> {
               animalList: animalList,
             );
           } else {
-            return Container(
-              child: Center(
-                child: Text('cupertino tab 2'),
-              ),
+            return CupertinoSecondPage(
+              animalList: animalList,
             );
           }
         }),
