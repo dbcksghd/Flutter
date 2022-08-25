@@ -1,13 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'firstPage.dart';
 import 'secondPage.dart';
+import 'thirdPage.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
@@ -22,7 +23,8 @@ class MainWidget extends StatelessWidget {
 
     List<BottomNavigationBarItem> items = [
       BottomNavigationBarItem(icon: Icon(CupertinoIcons.home)),
-      BottomNavigationBarItem(icon: Icon(CupertinoIcons.settings))
+      BottomNavigationBarItem(icon: Icon(CupertinoIcons.settings)),
+      BottomNavigationBarItem(icon: Icon(CupertinoIcons.heart_circle_fill))
     ];
 
     return CupertinoTabScaffold(
@@ -33,6 +35,8 @@ class MainWidget extends StatelessWidget {
               return FirstWidget();
             case 1:
               return SecondWidget();
+            case 2:
+              return ThirdWidget();
             default:
               return FirstWidget();
           }
@@ -52,5 +56,12 @@ class SecondWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoSecondPage();
+  }
+}
+
+class ThirdWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoThirdPage();
   }
 }
