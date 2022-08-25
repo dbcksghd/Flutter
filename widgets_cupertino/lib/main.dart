@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'firstPage.dart';
+import 'secondPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -43,15 +44,13 @@ class MainWidget extends StatelessWidget {
 class FirstWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('1번 페이지'),
-    );
+    return CupertinoFirstPage();
   }
 }
 
 class SecondWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CupertinoFlutterApp();
+    return CupertinoSecondPage();
   }
 }

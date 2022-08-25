@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-class CupertinoFlutterApp extends StatefulWidget {
-  const CupertinoFlutterApp({Key? key}) : super(key: key);
+class CupertinoFirstPage extends StatefulWidget {
+  const CupertinoFirstPage({Key? key}) : super(key: key);
 
   @override
-  State<CupertinoFlutterApp> createState() => _CupertinoFlutterAppState();
+  State<CupertinoFirstPage> createState() => _CupertinoFirstPageState();
 }
 
-class _CupertinoFlutterAppState extends State<CupertinoFlutterApp> {
+class _CupertinoFirstPageState extends State<CupertinoFirstPage> {
   var _isOn = false;
   @override
   Widget build(BuildContext context) {
