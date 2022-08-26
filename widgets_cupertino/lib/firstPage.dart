@@ -81,11 +81,43 @@ class _CupertinoFirstPageState extends State<CupertinoFirstPage> {
                         actions: [
                           CupertinoButton(
                               child: Text('빨강'),
-                              onPressed: (){}
+                              onPressed: (){
+                                showCupertinoDialog(
+                                    context: context,
+                                    builder: (context){
+                                      return CupertinoAlertDialog( //알림창 위젯
+                                        title: Text('헉'),
+                                        content: Text('잘 알았습니다,,'),
+                                        actions: [
+                                          CupertinoButton(
+                                              child: Text('확인'),
+                                              onPressed: (){
+                                                Navigator.of(context).pop();
+                                              }),
+                                        ],
+                                      );
+                                    });
+                              }
                           ),
                           CupertinoButton(
                               child: Text('파랑'),
-                              onPressed: (){}
+                              onPressed: (){
+                                showCupertinoDialog(
+                                    context: context,
+                                    builder: (context){
+                                      return CupertinoAlertDialog( //알림창 위젯
+                                        title: Text('허걱'),
+                                        content: Text('잘 알았습니다,,'),
+                                        actions: [
+                                          CupertinoButton(
+                                              child: Text('확인'),
+                                              onPressed: (){
+                                                Navigator.of(context).pop();
+                                              }),
+                                        ],
+                                      );
+                                    });
+                              }
                           ),
                         ],
                         cancelButton: CupertinoButton(

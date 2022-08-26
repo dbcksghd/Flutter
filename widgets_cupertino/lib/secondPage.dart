@@ -20,6 +20,9 @@ class _CupertinoSecondPageState extends State<CupertinoSecondPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CupertinoNavigationBar(
+        middle: Text('쿠퍼티노 디자인'),
+      ),
       body: Container(
         child: Center(
           child: Column(
