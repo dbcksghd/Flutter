@@ -12,7 +12,7 @@ class LargeFileMain extends StatefulWidget {
 
 class _LargeFileMainState extends State<LargeFileMain> {
   //다운로드 할 이미지 주소
-  final imgUrl = 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTExMTdfMTM3%2FMDAxNjM3MTMwMzk1MTU2.CQt8WsFrmJMqPL5Hp3cAdwQ96TXs7Nd03YBtoUNFdcog.nZnp2kIG0zGx2BxuCayNfVRyviarz8rmpqKO6OWE_c8g.JPEG.mt_nf%2FKakaoTalk_Photo_2021-11-17-15-26-17.jpeg&type=sc960_832';
+  final imgUrl = 'https://yt3.ggpht.com/ytc/AMLnZu84oZmNhLWpU1qaLbKTLXRO4VSNqVh4DOkSEGfJDQ=s176-c-k-c0x00ffffff-no-rj';
   bool downloading = false; //다운로딩 중인지 확인하는 변수
   var progressString = ""; //지금 얼마나 다운로드되었는지 표시해주는 변수
   String file = ""; //다운로드할 파일
@@ -23,8 +23,8 @@ class _LargeFileMainState extends State<LargeFileMain> {
       var dir = await getApplicationDocumentsDirectory(); //플러터 앱의 내부 디렉토리를 가져오는 역할
       await dio.download(imgUrl, '${dir.path}/myimage.jpg', //url에 담긴 주소를 가져옴, 받은 파일은 내부 디렉토리 안에 myimage.jpg라는 이름으로 저장
           onReceiveProgress: (rec, total){ //데이터를 받을때마다 실행하는 함수
-            print('Res: $rec, Total: $total'); //rec는 지금까지 받은 데이터, total은 파일의 전체 크기
-            file = '${dir.path}/myImage.jpg';
+            print('Rec: $rec, Total: $total'); //rec는 지금까지 받은 데이터, total은 파일의 전체 크기
+            file = '${dir.path}/myimage.jpg';
             setState(() {
               downloading = true; //다운로딩이 시작되면 true
               progressString = ((rec/total) * 100).toStringAsFixed(0) + '%'; //퍼센트게이지로 보여주기 위해 rec/total 후 100을 곱함
@@ -47,8 +47,8 @@ class _LargeFileMainState extends State<LargeFileMain> {
         title: Text('Large File Example'),
       ),
       body: Center(
-          child: downloading
-              ? Container(
+          child: downloading ?
+          Container(
             height: 120.0,
             width: 200.0,
             child: Card(
@@ -70,7 +70,8 @@ class _LargeFileMainState extends State<LargeFileMain> {
               ),
             ),
           )
-              : FutureBuilder(
+              :
+          FutureBuilder(
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.none: //오류가 발생했을 때
@@ -100,6 +101,7 @@ class _LargeFileMainState extends State<LargeFileMain> {
       ),
     );
   }
+
   Future<Widget> downloadWidget(String filePath) async {
     File file = File(filePath);
     bool exist = await file.exists();
