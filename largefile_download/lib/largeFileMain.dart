@@ -12,7 +12,15 @@ class LargeFileMain extends StatefulWidget {
 
 class _LargeFileMainState extends State<LargeFileMain> {
   //다운로드 할 이미지 주소
-  final imgUrl = 'https://yt3.ggpht.com/ytc/AMLnZu84oZmNhLWpU1qaLbKTLXRO4VSNqVh4DOkSEGfJDQ=s176-c-k-c0x00ffffff-no-rj';
+  TextEditingController? _editingController; //텍스트 필드를 사용하기 위해
+
+  @override
+  void initState(){ //초기화 시켜주기
+    super.initState();
+    _editingController = new TextEditingController(
+      text: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5577%2F2021%2F12%2F20%2F0000007890_001_20211220142002680.jpg&type=sc960_832'
+    );
+  }
   bool downloading = false; //다운로딩 중인지 확인하는 변수
   var progressString = ""; //지금 얼마나 다운로드되었는지 표시해주는 변수
   String file = ""; //다운로드할 파일
@@ -21,7 +29,7 @@ class _LargeFileMainState extends State<LargeFileMain> {
     Dio dio = Dio();
     try{
       var dir = await getApplicationDocumentsDirectory(); //플러터 앱의 내부 디렉토리를 가져오는 역할
-      await dio.download(imgUrl, '${dir.path}/myimage.jpg', //url에 담긴 주소를 가져옴, 받은 파일은 내부 디렉토리 안에 myimage.jpg라는 이름으로 저장
+      await dio.download(_editingController!.value.text, '${dir.path}/myimage.jpg', //url에 담긴 주소를 가져옴, 받은 파일은 내부 디렉토리 안에 myimage.jpg라는 이름으로 저장
           onReceiveProgress: (rec, total){ //데이터를 받을때마다 실행하는 함수
             print('Rec: $rec, Total: $total'); //rec는 지금까지 받은 데이터, total은 파일의 전체 크기
             file = '${dir.path}/myimage.jpg';
@@ -44,7 +52,12 @@ class _LargeFileMainState extends State<LargeFileMain> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Large File Example'),
+        title: TextField(
+          controller: _editingController,
+          style: TextStyle(color: Colors.white),
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(hintText: 'Url 입력하세요'),
+        ),
       ),
       body: Center(
           child: downloading ?
