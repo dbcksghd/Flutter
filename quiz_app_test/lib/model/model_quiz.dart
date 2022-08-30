@@ -1,7 +1,7 @@
 class Quiz {
-  String? title;
-  List<String>? candidates;
-  int? answer;
+  String title;
+  List<String> candidates;
+  int answer;
 
   Quiz({this.title, this.candidates, this.answer});
 
