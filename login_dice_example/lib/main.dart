@@ -81,7 +81,7 @@ class _LogInState extends State<LogIn> {
                               labelText: '비밀번호를 입력하세요'
                           ),
                           keyboardType: TextInputType.text, //입력 키보드
-                          obscureText: true,
+                          obscureText: true, //비밀번호 칠때 가려주는 기능 켜기
                         ),
                         SizedBox(
                           height: 40.0,
