@@ -21,23 +21,20 @@ class MyButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Image.asset('images/glogo.png'),
-            Text(
-              'Login with Google',
-              style: TextStyle(color: Colors.black87, fontSize: 15.0),
-            ),
+            image,
+            text,
             Opacity(
               opacity: 0.0,
               child: Image.asset('images/glogo.png'),
             ),
           ],
         ),
-        color: Colors.white,
-        onPressed: () {},
+        color: color,
+        onPressed: onPressed,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(4.0),
+          Radius.circular(radius),
         ),
       ),
     );

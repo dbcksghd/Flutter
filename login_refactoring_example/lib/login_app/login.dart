@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_refactoring_example/my_button/my_button.dart';
 
 class LogIn extends StatelessWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -15,103 +16,91 @@ class LogIn extends StatelessWidget {
         centerTitle: true,
         elevation: 0.2,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ButtonTheme(
-              height: 50.0,
-              child: RaisedButton(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Image.asset('images/glogo.png'),
-                    Text(
-                      'Login with Google',
-                      style: TextStyle(color: Colors.black87, fontSize: 15.0),
-                    ),
-                    Opacity(
-                      opacity: 0.0,
-                      child: Image.asset('images/glogo.png'),
-                    ),
-                  ],
-                ),
-                color: Colors.white,
-                onPressed: () {},
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(4.0),
-                ),
-              ),
+      body: _buildButton(), //'_'이 붙으면 같은 파일 안에서만 접근 가능 (private)
+    );
+  }
+
+  Widget _buildButton() {
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          MyButton(
+            image: Image.asset('images/glogo.png'),
+            text: Text(
+              'Login with Google',
+              style: TextStyle(color: Colors.black87, fontSize: 15.0),
             ),
-            SizedBox(
-              height: 10.0,
-            ),
-            ButtonTheme(
-              height: 50.0,
-              child: RaisedButton(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Image.asset('images/flogo.png'),
-                    Text(
-                      'Login with Facebook',
-                      style: TextStyle(color: Colors.white, fontSize: 15.0),
-                    ),
-                    Opacity(
-                      opacity: 0.0,
-                      child: Image.asset('images/glogo.png'),
-                    ),
-                  ],
-                ),
-                color: Color(0xFF334D92),
-                onPressed: () {},
+            color: Colors.white,
+            radius: 4.0,
+            onPressed: (){},
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          ButtonTheme(
+            height: 50.0,
+            child: RaisedButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Image.asset('images/flogo.png'),
+                  Text(
+                    'Login with Facebook',
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                  ),
+                  Opacity(
+                    opacity: 0.0,
+                    child: Image.asset('images/glogo.png'),
+                  ),
+                ],
               ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(4.0),
-                ),
+              color: Color(0xFF334D92),
+              onPressed: () {},
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(4.0),
               ),
             ),
-            SizedBox(
-              height: 10.0,
-            ),
-            ButtonTheme(
-              height: 50.0,
-              child: RaisedButton(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Icon(
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          ButtonTheme(
+            height: 50.0,
+            child: RaisedButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Icon(
+                    Icons.mail,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    'Login with Email',
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                  ),
+                  Opacity(
+                    opacity: 0.0,
+                    child: Icon(
                       Icons.mail,
                       color: Colors.white,
                     ),
-                    Text(
-                      'Login with Email',
-                      style: TextStyle(color: Colors.white, fontSize: 15.0),
-                    ),
-                    Opacity(
-                      opacity: 0.0,
-                      child: Icon(
-                        Icons.mail,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-                color: Colors.green,
-                onPressed: () {},
+                  ),
+                ],
               ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(4.0),
-                ),
+              color: Colors.green,
+              onPressed: () {},
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(4.0),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
