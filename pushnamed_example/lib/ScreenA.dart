@@ -9,25 +9,22 @@ class ScreenA extends StatelessWidget {
       appBar: AppBar(
         title: Text("ScreenA"),
       ),
-
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center, // 정가운데 배치
           children: <Widget>[
-            RaisedButton(
-              color: Colors.red,
-              child: Text("Go To ScreenB"),
-              onPressed: (){
+            ElevatedButton(
+              onPressed: () {
                 Navigator.pushNamed(context, "/b");
               },
+              child: Text("Go To Screen B"),
             ),
-            RaisedButton(
-              color: Colors.red,
-              child: Text("Go To ScreenC"),
-              onPressed: (){
+            ElevatedButton(
+              onPressed: () {
                 Navigator.pushNamed(context, "/c");
               },
-            )
+              child: Text("Go To Screen C"),
+            ),
           ],
         ),
       ),
