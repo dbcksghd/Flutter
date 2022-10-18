@@ -20,9 +20,13 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WebView(
-      initialUrl: 'https://www.naver.com',
-      javascriptMode: JavascriptMode.unrestricted,
+    return Scaffold(
+      body: SafeArea(
+        child: WebView(
+          initialUrl: 'https://www.naver.com',
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
+      ),
     );
   }
 }
