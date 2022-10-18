@@ -25,6 +25,7 @@ class MyHomePage extends StatelessWidget {
         child: WebView(
           initialUrl: 'https://www.naver.com',
           javascriptMode: JavascriptMode.unrestricted,
+          gestureNavigationEnabled: true, ///이전 페이지로 돌아가기
         ),
       ),
     );
