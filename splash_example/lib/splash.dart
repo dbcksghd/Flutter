@@ -9,6 +9,14 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 3)).then(
+      (value) => Navigator.pushReplacementNamed(context, '/home'),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
