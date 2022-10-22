@@ -11,10 +11,7 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-<<<<<<< HEAD
           mainAxisAlignment: MainAxisAlignment.center,
-=======
->>>>>>> master
           children: [
             Text('메인 화면'),
           ],
