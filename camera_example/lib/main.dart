@@ -1,57 +1,65 @@
-import 'package:flutter/material.dart';
-import 'dart:io';
 import 'dart:async';
-import 'package:camera/camera.dart';
-import 'package:path/path.dart' show join;
-import 'package:path_provider/path_provider.dart';
 
+import 'package:camera/camera.dart';
+import 'package:flutter/material.dart';
 
 Future<void> main() async {
   final cameras = await availableCameras();
   final firstCamera = cameras.first;
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  runApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
       home: TakePictureScreen(
+        camera: firstCamera,
       ),
-    );
-  }
+    ),
+  );
 }
-
 
 class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
-  const TakePictureScreen(@required this.camera);
+
+  TakePictureScreen({required this.camera});
 
   @override
-  State<TakePictureScreen> createState() => _TakePictureScreenState();
+  TakePictureScreenState createState() => TakePictureScreenState();
 }
 
-class _TakePictureScreenState extends State<TakePictureScreen> {
+class TakePictureScreenState extends State<TakePictureScreen> {
   CameraController? controller;
   Future<void>? initializeControllerFuture;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    controller = CameraController(widget.camera, ResolutionPreset.medium);
+    controller = CameraController(
+      widget.camera,
+      ResolutionPreset.medium,
+    );
+
     initializeControllerFuture = controller!.initialize();
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     controller!.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: Text('Take a picture')),
+      body: FutureBuilder<void>(
+        future: initializeControllerFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return CameraPreview(controller!);
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
+    );
   }
 }
