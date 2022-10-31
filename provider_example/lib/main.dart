@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_example/fish_model.dart';
 
 void main() => runApp(const MyApp());
 
@@ -7,9 +9,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: FishOrder(),
+    return Provider(
+      create: (context)=>FishModel(name: 'Salmon', number: 10, size: 'big'),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: FishOrder(),
+      ),
     );
   }
 }
@@ -27,7 +32,7 @@ class FishOrder extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Fish name',
+              'Fish name : ${Provider.of<FishModel>(context).name}',
               style: TextStyle(fontSize: 20),
             ),
             SizedBox(
@@ -69,7 +74,7 @@ class SpicyA extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Fish number',
+          'Fish number: ${Provider.of<FishModel>(context).number}',
           style: TextStyle(
             fontSize: 16,
             color: Colors.red,
@@ -77,7 +82,7 @@ class SpicyA extends StatelessWidget {
           ),
         ),
         Text(
-          'Fish size',
+          'Fish size : ${Provider.of<FishModel>(context).size}',
           style: TextStyle(
             fontSize: 16,
             color: Colors.red,
@@ -121,12 +126,12 @@ class SpicyB extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Fish number',
+          'Fish number : ${Provider.of<FishModel>(context).number}',
           style: TextStyle(
               fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
         Text(
-          'Fish size',
+          'Fish size : ${Provider.of<FishModel>(context).size}',
           style: TextStyle(
               fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
@@ -167,12 +172,12 @@ class SpicyC extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'number',
+          'Fish number : ${Provider.of<FishModel>(context).number}',
           style: TextStyle(
               fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
         Text(
-          'size',
+          'Fish size : ${Provider.of<FishModel>(context).size}',
           style: TextStyle(
               fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
