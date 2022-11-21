@@ -104,9 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.camera);
     if (pickedFile != null) {
-      setState(() {
-        _pickedFile = pickedFile;
-      });
+      await cropImage(pickedFile);
     } else {
       if (kDebugMode) {
         print('이미지 선택안함');
@@ -118,13 +116,13 @@ class _MyHomePageState extends State<MyHomePage> {
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      setState(() {
-        _pickedFile = pickedFile;
-      });
+      await cropImage(pickedFile);
     } else {
       if (kDebugMode) {
         print('이미지 선택안함');
       }
     }
   }
+
+  
 }
