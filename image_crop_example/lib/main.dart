@@ -33,15 +33,46 @@ class _MyHomePageState extends State<MyHomePage> {
               minWidth: MediaQuery.of(context).size.width,
               minHeight: MediaQuery.of(context).size.width,
             ),
-            child: Center(
-              child: Icon(
-                Icons.account_circle,
-                size: imageSize,
+            child: GestureDetector(
+              onTap: () {
+                _showBottomSheet();
+              },
+              child: Center(
+                child: Icon(
+                  Icons.account_circle,
+                  size: imageSize,
+                ),
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  _showBottomSheet() {
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('사진찍기'),
+            ),
+            const SizedBox(height: 10),
+            const Divider(thickness: 3),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('갤러리에서 불러오기'),
+            ),
+            const SizedBox(height: 20),
+          ],
+        );
+      },
     );
   }
 }
