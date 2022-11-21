@@ -111,4 +111,17 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     }
   }
+
+  _getGalleryImage() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != Null){
+      setState(() {
+        _pickedFile = _pickedFile;
+      });
+    } else {
+      if (kDebugMode){
+        print('이미지 선택 안함');
+      }
+    }
+  }
 }
