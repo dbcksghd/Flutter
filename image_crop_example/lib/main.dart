@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -31,15 +30,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final imageSize = MediaQuery.of(context).size.width / 4;
+    final _imageSize = MediaQuery.of(context).size.width / 2;
+
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (_pickedFile == Null)
+          if (_pickedFile == null)
             Container(
               constraints: BoxConstraints(
-                minWidth: MediaQuery.of(context).size.width,
-                minHeight: MediaQuery.of(context).size.width,
+                minHeight: _imageSize,
+                minWidth: _imageSize,
               ),
               child: GestureDetector(
                 onTap: () {
@@ -48,24 +49,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Center(
                   child: Icon(
                     Icons.account_circle,
-                    size: imageSize,
+                    size: _imageSize,
                   ),
                 ),
               ),
             )
           else
-            Container(
-              width: imageSize,
-              height: imageSize,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  width: 2,color: Theme.of(context).colorScheme.primary
+            Center(
+              child: Container(
+                width: _imageSize,
+                height: _imageSize,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                      width: 2, color: Theme.of(context).colorScheme.primary),
+                  image: DecorationImage(
+                      image: FileImage(File(_pickedFile!.path)),
+                      fit: BoxFit.cover),
                 ),
-                image: DecorationImage(
-                  image: FileImage(File(_pickedFile!.path)),
-                  fit: BoxFit.cover,
-                )
               ),
             ),
         ],
@@ -82,14 +83,14 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => _getCameraImage(),
               child: const Text('사진찍기'),
             ),
             const SizedBox(height: 10),
             const Divider(thickness: 3),
             const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => _getGalleryImage(),
               child: const Text('갤러리에서 불러오기'),
             ),
             const SizedBox(height: 20),
@@ -100,27 +101,29 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _getCameraImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
-    if (pickedFile != Null){
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
       setState(() {
         _pickedFile = pickedFile;
       });
     } else {
-      if (kDebugMode){
-        print('이미지 선택 안함');
+      if (kDebugMode) {
+        print('이미지 선택안함');
       }
     }
   }
 
   _getGalleryImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (pickedFile != Null){
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
       setState(() {
-        _pickedFile = _pickedFile;
+        _pickedFile = pickedFile;
       });
     } else {
-      if (kDebugMode){
-        print('이미지 선택 안함');
+      if (kDebugMode) {
+        print('이미지 선택안함');
       }
     }
   }
