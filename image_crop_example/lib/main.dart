@@ -1,4 +1,9 @@
+import 'dart:io';
+import 'dart:math';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,29 +27,47 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  XFile? _pickedFile;
+
   @override
   Widget build(BuildContext context) {
     final imageSize = MediaQuery.of(context).size.width / 4;
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            constraints: BoxConstraints(
-              minWidth: MediaQuery.of(context).size.width,
-              minHeight: MediaQuery.of(context).size.width,
-            ),
-            child: GestureDetector(
-              onTap: () {
-                _showBottomSheet();
-              },
-              child: Center(
-                child: Icon(
-                  Icons.account_circle,
-                  size: imageSize,
+          if (_pickedFile == Null)
+            Container(
+              constraints: BoxConstraints(
+                minWidth: MediaQuery.of(context).size.width,
+                minHeight: MediaQuery.of(context).size.width,
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  _showBottomSheet();
+                },
+                child: Center(
+                  child: Icon(
+                    Icons.account_circle,
+                    size: imageSize,
+                  ),
                 ),
               ),
+            )
+          else
+            Container(
+              width: imageSize,
+              height: imageSize,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  width: 2,color: Theme.of(context).colorScheme.primary
+                ),
+                image: DecorationImage(
+                  image: FileImage(File(_pickedFile!.path)),
+                  fit: BoxFit.cover,
+                )
+              ),
             ),
-          ),
         ],
       ),
     );
@@ -74,5 +97,18 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       },
     );
+  }
+
+  _getCameraImage() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (pickedFile != Null){
+      setState(() {
+        _pickedFile = pickedFile;
+      });
+    } else {
+      if (kDebugMode){
+        print('이미지 선택 안함');
+      }
+    }
   }
 }
