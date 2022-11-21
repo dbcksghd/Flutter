@@ -26,7 +26,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  XFile? _pickedFile;
+  String? _pickedFile;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   border: Border.all(
                       width: 2, color: Theme.of(context).colorScheme.primary),
                   image: DecorationImage(
-                      image: FileImage(File(_pickedFile!.path)),
+                      image: FileImage(File(_pickedFile!)),
                       fit: BoxFit.cover),
                 ),
               ),
@@ -124,5 +124,5 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  
+
 }
