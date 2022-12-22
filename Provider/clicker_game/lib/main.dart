@@ -49,3 +49,22 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
+class CountNumber extends StatelessWidget {
+  const CountNumber({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Consumer<Counter>(
+        builder: (context, counter, child) {
+          return Text(
+            Provider.of<Counter>(context).count.toString(),
+            style: TextStyle(fontSize: 60),
+          );
+        },
+      ),
+    );
+  }
+}
