@@ -22,3 +22,30 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class HomePage extends StatelessWidget {
+  HomePage({Key? key}) : super(key: key);
+
+  late Counter counter;
+
+  @override
+  Widget build(BuildContext context) {
+    counter = Provider.of<Counter>(context, listen: false);
+    return Scaffold(
+      body: CountNumber(),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+            onPressed: () => counter.add(),
+            icon: Icon(Icons.add),
+          ),
+          IconButton(
+            onPressed: () => counter.remove(),
+            icon: Icon(Icons.remove),
+          ),
+        ],
+      ),
+    );
+  }
+}
