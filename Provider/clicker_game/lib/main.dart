@@ -32,17 +32,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     counter = Provider.of<Counter>(context, listen: false);
     return Scaffold(
-      body: CountNumber(),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: const CountNumber(),
+      bottomNavigationBar: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           IconButton(
             onPressed: () => counter.add(),
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
           ),
           IconButton(
             onPressed: () => counter.remove(),
-            icon: Icon(Icons.remove),
+            icon: const Icon(Icons.remove),
           ),
         ],
       ),
@@ -61,7 +61,7 @@ class CountNumber extends StatelessWidget {
         builder: (context, counter, child) {
           return Text(
             Provider.of<Counter>(context).count.toString(),
-            style: TextStyle(fontSize: 60),
+            style: const TextStyle(fontSize: 60),
           );
         },
       ),
