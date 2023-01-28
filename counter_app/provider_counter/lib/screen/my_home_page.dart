@@ -20,7 +20,7 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () => _countProvider.incrementCounter,
+            onPressed: () => _countProvider.incrementCounter(),
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
