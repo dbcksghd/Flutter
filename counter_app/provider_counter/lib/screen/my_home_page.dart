@@ -13,9 +13,9 @@ class MyHomePage extends StatelessWidget {
     _countProvider = Provider.of<CountProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: Text('프로바이더 카운터 앱'),
+        title: const Text('프로바이더 카운터 앱'),
       ),
-      body: CountHome(),
+      body: const CountHome(),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
