@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -24,11 +24,12 @@ class _MyHomePageState extends State<MyHomePage> {
             StreamBuilder<int>(
               stream: counter.stream,
               builder: (context, snapshot) {
-                if (snapshot.hasData)
+                if (snapshot.hasData) {
                   return Text(
                     snapshot.data.toString(),
                     style: Theme.of(context).textTheme.headlineMedium,
                   );
+                }
                 return Text('0',
                     style: Theme.of(context).textTheme.headlineMedium);
               },
