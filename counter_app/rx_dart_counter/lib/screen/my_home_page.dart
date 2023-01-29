@@ -21,9 +21,17 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('You have pushed the button this many times:'),
-            Text(
-              '0',
-              style: Theme.of(context).textTheme.headlineMedium,
+            StreamBuilder<int>(
+              stream: counter.stream,
+              builder: (context, snapshot) {
+                if (snapshot.hasData)
+                  return Text(
+                    snapshot.data.toString(),
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  );
+                return Text('0',
+                    style: Theme.of(context).textTheme.headlineMedium);
+              },
             ),
           ],
         ),
