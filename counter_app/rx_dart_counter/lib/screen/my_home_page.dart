@@ -9,7 +9,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int conut = 0;
+  int count = 0;
+  final counter = BehaviorSubject<int>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +32,11 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () => counter.add(++count),
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
-            onPressed: () => {},
+            onPressed: () => counter.add(--count),
             child: const Icon(Icons.remove),
           ),
         ],
