@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simple_state_management/controller/count_controller.dart';
 
-void main() => runApp(GetMaterialApp(home: MyApp()));
+void main() =>
+    runApp(GetMaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
@@ -25,6 +26,19 @@ class MyApp extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: controller.increment,
+            child: const Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            onPressed: controller.decrement,
+            child: const Icon(Icons.remove),
+          ),
+        ],
       ),
     );
   }
