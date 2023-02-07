@@ -28,6 +28,19 @@ class MyApp extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: controller.increment,
+            child: const Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            onPressed: controller.decrement,
+            child: const Icon(Icons.remove),
+          ),
+        ],
+      ),
     );
   }
 }
