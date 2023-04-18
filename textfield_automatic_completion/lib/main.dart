@@ -23,6 +23,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<String> dataList = List.empty(growable: true);
+  List<String> searchList = List.empty(growable: true);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,13 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Container(
           color: Colors.grey,
-          child: TextField(),
+          child: TextField(
+            onChanged: (value) {
+              setState(() {
+                searchList = search(value);
+              });
+            },
+          ),
         ),
       ),
     );
