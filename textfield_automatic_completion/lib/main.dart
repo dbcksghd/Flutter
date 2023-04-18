@@ -22,12 +22,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<String> dataList = List.empty(growable: true);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Container(color: Colors.grey, child: TextField()),
+        title: Container(
+          color: Colors.grey,
+          child: TextField(),
+        ),
       ),
     );
+  }
+
+  List<String> search(String query) {
+    List<String> result = [];
+    for (String a in dataList) {
+      if (a.contains(query)) {
+        result.add(a);
+      }
+    }
+    return result;
   }
 }
