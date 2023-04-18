@@ -22,7 +22,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String> dataList = List.empty(growable: true);
+  List<String> dataList = ["what", "whatf", "asdf", "asfas"];
   List<String> searchList = List.empty(growable: true);
 
   @override
@@ -39,6 +39,14 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
         ),
+      ),
+      body: ListView.builder(
+        itemCount: searchList.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(searchList[index]),
+          );
+        },
       ),
     );
   }
