@@ -25,6 +25,12 @@ class MyHomePage extends StatelessWidget {
           "Github Login Example",
         ),
       ),
+      body: const Center(
+        child: ElevatedButton(
+          onPressed: null,
+          child: Text("깃허브 로그인하기"),
+        ),
+      ),
     );
   }
 }
