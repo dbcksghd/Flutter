@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:news_app/Model/articles.dart';
 import 'package:news_app/Model/news.dart';
 import 'package:http/http.dart' as http;
 import 'package:news_app/private.dart';
@@ -12,4 +12,7 @@ class DataSource {
     }
     throw Exception("데이터 받아오기 실패");
   }
+
+  Future<List<Articles>> getArticlesList() =>
+      getNews().then((value) => value.articles!);
 }
