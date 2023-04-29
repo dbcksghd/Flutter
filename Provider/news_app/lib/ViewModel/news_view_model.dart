@@ -1,20 +1,20 @@
 import 'package:flutter/cupertino.dart';
-import 'package:news_app/Model/news.dart';
+import 'package:news_app/Model/articles.dart';
 import 'package:news_app/Repository/news_repository.dart';
 
 class NewsViewModel with ChangeNotifier {
   late final NewsRepository _newsRepository;
-  News _news = News();
+  List<Articles> _list = List.empty(growable: true);
 
-  News get news => _news;
+  List<Articles> get list => _list;
 
   NewsViewModel() {
     _newsRepository = NewsRepository();
-    _getNews();
+    _getArticles();
   }
 
-  Future<void> _getNews() async {
-    _news = await _newsRepository.getNews();
+  Future _getArticles() async {
+    _list = await _newsRepository.getArticleList();
     notifyListeners();
   }
 }
